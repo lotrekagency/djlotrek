@@ -23,6 +23,11 @@ def is_in(value, args):
   return value in args.split(',')
 
 
+@register.filter(name='is_not_in')
+def is_not_in(value, args):
+  return not is_in(value, args)
+
+
 @register.filter(name='get_class')
 def get_class(value):
   return value.__class__.__name__
