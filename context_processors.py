@@ -11,14 +11,15 @@ def alternate_seo_url(request):
     alternate_url = dict()
     path = request.path
     url_parts = resolve( path )
-    url = path
-    cur_language = get_language()
-    for lang_code, lang_name in django_settings.LANGUAGES :
-        try:
-            activate(lang_code)
-            url = reverse( url_parts.view_name, kwargs=url_parts.kwargs )
-            alternate_url[lang_code] = django_settings.SITE_URL+url
-        finally:
-            activate(cur_language)
+    if not url_parts.app_names:
+        url = path
+        cur_language = get_language()
+        for lang_code, lang_name in django_settings.LANGUAGES :
+            try:
+                activate(lang_code)
+                url = reverse( url_parts.view_name, kwargs=url_parts.kwargs )
+                alternate_url[lang_code] = django_settings.SITE_URL+url
+            finally:
+                activate(cur_language)
 
     return {'alternate':alternate_url}
