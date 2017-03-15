@@ -4,12 +4,12 @@
 
 from django.dispatch import receiver
 from rosetta.signals import post_save
+from subprocess import Popen
 
 import time
 import os
 
+
 @receiver(post_save)
 def restart_server(sender, **kwargs):
-    os.system("./gunicorn.sh stop")
-    pass
-
+    p = Popen(['./gunicorn.sh', 'restart'])
