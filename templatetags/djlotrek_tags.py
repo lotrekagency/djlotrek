@@ -1,8 +1,12 @@
+import datetime
 import re
 
 from django import template
-import datetime
 from django.core.urlresolvers import reverse, NoReverseMatch
+
+from djlotrek import get_host_url
+from urllib.parse import urljoin
+
 
 register = template.Library()
 
@@ -16,6 +20,7 @@ def auto_update_year_range(start=None):
         return '{0}-{1}'.format(start, current_year)
     return current_year
 
+
 @register.simple_tag(takes_context=True)
 def active(context, pattern_or_urlname):
     try:
@@ -26,3 +31,12 @@ def active(context, pattern_or_urlname):
     if re.search(pattern, path):
         return 'active'
     return ''
+
+
+@register.simple_tag(takes_context=True)
+def absolute_url(context, url):
+    host = get_host_url(context['request'])
+    if url:
+        return urljoin(host, url)
+    else:
+        return ''

@@ -1,5 +1,3 @@
-from urllib.parse import urljoin
-
 
 def get_host_url(request):
     if request:

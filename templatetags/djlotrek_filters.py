@@ -13,6 +13,13 @@ def label(queryset, args):
     return ''
 
 
+@register.filter(name='media_url')
+def media_url(media):
+    if media:
+        return media.url
+    return ''
+
+
 @register.filter(name='key')
 def key(d, key_name):
     return d[key_name]
@@ -31,6 +38,7 @@ def is_not_in(value, args):
 @register.filter(name='get_class')
 def get_class(value):
   return value.__class__.__name__
+
 
 @register.filter(name='get_sorted')
 def get_sorted(value):
