@@ -35,7 +35,7 @@ def active(context, pattern_or_urlname):
 
 @register.simple_tag(takes_context=True)
 def absolute_url(context, url):
-    host = get_host_url(context['request'])
+    host = get_host_url('' if 'request' not in context else context['request'])
     if url:
         return urljoin(host, url)
     else:
