@@ -11,6 +11,6 @@ def group_queryset_by_attribute(queryset, attribute):
 def order_dict_from_list(queue, key_order):
     new_queue = OrderedDict()
     for key in key_order:
-        if key in new_queue:
+        if key in queue:
             new_queue[key] = queue[key]
     return new_queue
