@@ -1,0 +1,15 @@
+{% load i18n static %}
+<div class="related-widget-wrapper">
+    <div>{{ widget }}</div>
+    <div>
+    {% spaceless %}
+    {% for model in model_choices %}
+    <a  href="{{model.related_url}}"
+        class="related-widget-wrapper-link add-related" id="add_id_content"
+        alt="{{model.label}}">
+        <span id="add_id_{{name}}" data-original-title>{{model.label}}</span>
+    </a><span> / </span>
+    {% endfor %}
+    {% endspaceless %}
+    </div>
+</div>
