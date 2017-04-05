@@ -8,7 +8,8 @@
         class="related-widget-wrapper-link add-related" id="add_id_content"
         alt="{{model.label}}">
         <span id="add_id_{{name}}" data-original-title>{{model.label}}</span>
-    </a><span> / </span>
+    </a>
+    {% if model != model_choices|last %}<span> / </span>{% endif %}
     {% endfor %}
     {% endspaceless %}
     </div>
