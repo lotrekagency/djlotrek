@@ -22,9 +22,9 @@ def auto_update_year_range(start=None):
 
 
 @register.simple_tag(takes_context=True)
-def active(context, pattern_or_urlname):
+def active(context, pattern_or_urlname, **kwargs):
     try:
-        pattern = '^' + reverse(pattern_or_urlname)
+        pattern = '^' + reverse(pattern_or_urlname, kwargs=kwargs)
     except NoReverseMatch:
         pattern = pattern_or_urlname
     path = context['request'].path
