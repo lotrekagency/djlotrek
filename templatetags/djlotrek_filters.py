@@ -1,5 +1,5 @@
 from django import template
-
+import re
 
 register = template.Library()
 
@@ -43,3 +43,9 @@ def get_class(value):
 @register.filter(name='get_sorted')
 def get_sorted(value):
     return sorted(value)
+
+@register.filter(name='regex_match')
+def regex_match(value,regex):
+    pattern = re.compile(regex)
+    if pattern.match(value):
+        return True
