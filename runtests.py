@@ -16,6 +16,7 @@ def configure(nose_args=None):
                 'BACKEND': 'django.template.backends.django.DjangoTemplates',
                 'APP_DIRS': True,
             }],
+            AES_ENCRIPTION_KEY = 'abcdefgh01234567',
             INSTALLED_APPS=[
                 'django.contrib.contenttypes',
                 'django.contrib.auth',
@@ -57,6 +58,6 @@ if __name__ == '__main__':
         # why the coverage trigger uses '--with-coverage' and why we don't need
         # to explicitly include it here.
         nose_args.extend([
-            '--cover-package=djlotrek', '--cover-branch', '--cover-html', '--cover-html-dir=htmlcov'])
+            '--cover-package=djlotrek', '--cover-branch', '--cover-html', '--cover-html-dir=htmlcov', '--nocapture'])
     configure(nose_args)
     runtests()
