@@ -22,7 +22,8 @@ def media_url(media):
 
 @register.filter(name='key')
 def key(d, key_name):
-    return d[key_name]
+    if key_name in d:
+        return d[key_name]
 
 
 @register.filter(name='is_in')

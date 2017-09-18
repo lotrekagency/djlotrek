@@ -22,3 +22,8 @@ class RequestUtilsTestCase(TestCase):
         request.META['HTTP_HOST'] = 'localhost'
         host_url = get_host_url(request)
         self.assertEqual(host_url, 'http://localhost')
+
+    def test_get_host_url_no_request(self):
+        """Our beloved get_host_url utility"""
+        host_url = get_host_url(None)
+        self.assertEqual(host_url, None)
