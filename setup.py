@@ -10,7 +10,7 @@ setup(
         'requests >= 2.18.4'
     ],
     description="Lotrek's beloved Django utilities library",
-    long_description=open('README.md', 'r').read(),
+    long_description=open('README.rst', 'r').read(),
     license="MIT",
     author="Lotrek",
     author_email="dimmitutto@lotrek.it",
