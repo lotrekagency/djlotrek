@@ -1,8 +1,8 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='djlotrek',
-    version='0.0.2',
+    version='0.0.3',
     url='https://github.com/lotrekagency/djlotrek',
     install_requires=[
         'Django >= 1.10',
@@ -14,7 +14,7 @@ setup(
     license="MIT",
     author="Lotrek",
     author_email="dimmitutto@lotrek.it",
-    packages=['djlotrek'],
+    packages=find_packages(),
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
