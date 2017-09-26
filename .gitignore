@@ -27,3 +27,7 @@ error_logs.log
 
 # Sockets
 *.socket
+
+#Build
+dist/
+djlotrek.egg-info/
