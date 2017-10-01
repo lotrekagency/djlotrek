@@ -12,11 +12,11 @@ from djlotrek.aes import decode
 
 class RequestUtilsTestCase(TestCase):
 
-    def setUp(self):
-        pass
-
     def test_get_host_url(self):
-        """Our beloved get_host_url utility"""
+        """
+        get_host_url function retrieve request object and
+        return host url when request object is not None
+        """
         request_factory = RequestFactory()
         request = request_factory.get('/path')
         request.META['HTTP_HOST'] = 'localhost'
@@ -24,6 +24,9 @@ class RequestUtilsTestCase(TestCase):
         self.assertEqual(host_url, 'http://localhost')
 
     def test_get_host_url_no_request(self):
-        """Our beloved get_host_url utility"""
+        """
+        get_host_url function retrieve request object and
+        return None when request object is None
+        """
         host_url = get_host_url(None)
         self.assertEqual(host_url, None)
