@@ -1,6 +1,3 @@
-import os
-import mock
-
 from django.test import TestCase
 
 from djlotrek.templatetags.djlotrek_filters import key, is_in, is_not_in, get_class, get_sorted

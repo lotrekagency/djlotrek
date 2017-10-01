@@ -1,11 +1,6 @@
-import os
-import mock
-
-from django.test import TestCase, RequestFactory
-from requests import RequestException
+from django.test import TestCase
 
 from djlotrek.utils import group_objects_by_attribute, order_dict_from_list
-from djlotrek.aes import decode
 
 
 class UtilsTestCase(TestCase):

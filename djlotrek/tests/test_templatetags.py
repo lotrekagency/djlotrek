@@ -1,4 +1,3 @@
-import os
 import datetime
 from mock import patch
 
@@ -71,4 +70,3 @@ class TemplateTagsTestCase(TestCase):
         composed_year = "1995-"+str(current_year)
         self.assertEqual(tested_year_start, composed_year)
         self.assertNotEqual(tested_year_start, "-")
-
