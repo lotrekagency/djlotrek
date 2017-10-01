@@ -1,15 +1,11 @@
 import os
-import mock
-
 import datetime
+from mock import patch
 
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 
 from djlotrek.templatetags.djlotrek_tags import absolute_url, auto_update_year_range
 
-from django.test import RequestFactory
-
-from mock import Mock, patch
 
 class TemplateTagsTestCase(TestCase):
 

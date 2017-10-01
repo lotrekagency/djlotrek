@@ -1,10 +1,8 @@
 import os
 import mock
 
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 from requests import RequestException
-
-from django.test import RequestFactory
 
 import djlotrek.aes
 
