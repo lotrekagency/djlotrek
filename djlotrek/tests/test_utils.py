@@ -1,22 +1,15 @@
-import os
-import mock
-
 from django.test import TestCase
-from requests import RequestException
-
-from django.test import RequestFactory
 
 from djlotrek.utils import group_objects_by_attribute, order_dict_from_list
-from djlotrek.aes import decode
 
 
 class UtilsTestCase(TestCase):
 
-    def setUp(self):
-        pass
-
     def test_group_objects_by_attribute(self):
-        """Our beloved get_host_url utility"""
+        """
+        group_objects_by_attribute utils use for group objects and attribute
+        together in a dictionary object
+        """
         class Human():
             name = ''
             age = 0
@@ -39,7 +32,10 @@ class UtilsTestCase(TestCase):
         self.assertEqual (len(grouped_objects[22]), 2)
 
     def test_order_dict_from_list(self):
-        """Our beloved get_host_url utility"""
+        """
+        order_dict_from_list utils pass dictionary and ordered key list
+        then return ordered dictionary
+        """
         my_dict = {
             'italian' : 'ciao',
             'english' : 'hello',

@@ -1,23 +1,18 @@
-import os
-import mock
-
 import datetime
+from mock import patch
 
-from django.test import TestCase
+from django.test import TestCase, RequestFactory
 
 from djlotrek.templatetags.djlotrek_tags import absolute_url, auto_update_year_range
 
-from django.test import RequestFactory
-
-from mock import Mock, patch
 
 class TemplateTagsTestCase(TestCase):
 
-    def setUp(self):
-        pass
-
     def test_absolute_url(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatetags absolute_url use for get full url of the current
+        request context it pass context and url and return full url
+        """
         request_factory = RequestFactory()
         request = request_factory.get('/path')
         request.META['HTTP_HOST'] = 'localhost'
@@ -42,7 +37,11 @@ class TemplateTagsTestCase(TestCase):
         self.assertEqual(abs_url, 'http://localhost/ciao/a/tutti?language=it')
 
     def test_absolute_url_without_request(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatetags absolute_url use for get full url of the current
+        request context it pass context and url it will return blank
+        string when context is none
+        """
         context = {}
 
         abs_url = absolute_url(context, '/ciao/')
@@ -52,6 +51,13 @@ class TemplateTagsTestCase(TestCase):
 
     @patch('djlotrek.templatetags.djlotrek_tags.datetime')
     def test_auto_update_year_range(self,datetime_now):
+        """
+        templatetags auto_update_year_range pass string of start year
+        and return itself when current year is equal to start year.
+        If start year is provided and not current year it will return
+        year range in format '{start_year} - {current_year}'. Otherwise,
+        it will return current year when start not provided
+        """
         datetime_now.datetime.now.return_value = datetime.date(2017,12,12)
         current_year = 2017
 
@@ -64,7 +70,3 @@ class TemplateTagsTestCase(TestCase):
         composed_year = "1995-"+str(current_year)
         self.assertEqual(tested_year_start, composed_year)
         self.assertNotEqual(tested_year_start, "-")
-
-
-
-

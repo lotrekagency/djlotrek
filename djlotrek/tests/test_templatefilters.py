@@ -1,6 +1,3 @@
-import os
-import mock
-
 from django.test import TestCase
 
 from djlotrek.templatetags.djlotrek_filters import key, is_in, is_not_in, get_class, get_sorted
@@ -8,33 +5,47 @@ from djlotrek.templatetags.djlotrek_filters import key, is_in, is_not_in, get_cl
 
 class TemplateFiltersTestCase(TestCase):
 
-    def setUp(self):
-        pass
-
     def test_key(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatefilter key is use for get value from dictionary object it's
+        pass dictionary object and key name then return value if
+        key exists otherwise return none
+        """
         my_dict = {'mykey' : 'value'}
         self.assertEqual(key(my_dict, 'mykey'), 'value')
         self.assertEqual(key(my_dict, 'nokey'), None)
 
     def test_is_in(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatefilter is_in use check arguments from string list separate
+        by comma (,) it pass value and arguments string then return a
+        boolean object of existen of value
+        """
         self.assertEqual(is_in('ciao', 'hello,ciao'), True)
         self.assertEqual(is_in('hola', 'hello,ciao'), False)
 
     def test_is_not_in(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatefilter is_not_in use to check not existen arguments
+        from string list separate by comma (,) it pass value and
+        arguments string then return a boolean object of not existen of value
+        """
         self.assertEqual(is_not_in('ciao', 'hello,ciao'), False)
         self.assertEqual(is_not_in('hola', 'hello,ciao'), True)
 
     def test_get_class(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatefilter get_class use to get a class name of retrieved class
+        """
         a = 1
         my_dict = {'mykey' : 'value'}
         self.assertEqual(get_class(a), 'int')
         self.assertEqual(get_class(my_dict), 'dict')
 
     def test_get_sorted(self):
-        """Our beloved get_host_url utility"""
+        """
+        templatefilter get_sorted retrive list objects and return sorted
+        version of it
+        """
         a = [10,2,3,5,1]
         self.assertEqual(get_sorted(a), [1,2,3,5,10])
