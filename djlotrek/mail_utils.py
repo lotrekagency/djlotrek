@@ -8,10 +8,9 @@ def send_mail(
     sender, receivers, subject, context={},
     template_html=None, template_txt=None,
     plain_message='', fail_silently=False,
-    cc=[], bcc=[],files=[]
+    cc=[], bcc=[], files=[]
 ):
 
-    extras = {}
     plain_message = ''
     html_text = ''
 
@@ -30,7 +29,8 @@ def send_mail(
         alternatives=((html_text or plain_message, 'text/html'),)
     )
 
-    for file in files:
-        if file['path']:
-            mail.attach_file(file['path'])
+    for file_item in files:
+        file_path = file_item.get('path')
+        if file_path:
+            mail.attach_file(file_path)
     mail.send(fail_silently)
