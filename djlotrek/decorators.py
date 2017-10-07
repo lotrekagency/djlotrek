@@ -5,6 +5,7 @@ import requests
 
 
 def check_recaptcha(view_func):
+    """Chech that the entered recaptcha data is correct"""
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
         request.recaptcha_is_valid = None
