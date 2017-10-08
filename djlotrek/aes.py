@@ -15,7 +15,7 @@ def __pad(raw):
 def encode(raw):
     aes = AES.new(settings.AES_ENCRIPTION_KEY, AES.MODE_ECB)
     encoded = base64.urlsafe_b64encode(aes.encrypt(__pad(raw))).decode("utf-8")
-    encoded = encoded.replace( "+", "%2B" );
+    encoded = encoded.replace("+", "%2B")
     return encoded
 
 

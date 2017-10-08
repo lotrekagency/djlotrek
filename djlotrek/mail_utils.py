@@ -1,4 +1,3 @@
-from django.core.mail import send_mail as old_send_mail
 from django.core.mail import EmailMultiAlternatives
 
 from django.template import loader
@@ -23,9 +22,12 @@ def send_mail(
         html_text = template_html.render(context)
 
     mail = EmailMultiAlternatives(
-        subject=subject, body=plain_message or html_text, 
-        from_email=sender, to=receivers,
-        cc=cc, bcc=bcc,
+        subject=subject,
+        body=plain_message or html_text,
+        from_email=sender,
+        to=receivers,
+        cc=cc,
+        bcc=bcc,
         alternatives=((html_text or plain_message, 'text/html'),)
     )
 
