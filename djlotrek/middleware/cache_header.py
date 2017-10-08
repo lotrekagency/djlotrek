@@ -1,5 +1,5 @@
-from django.middleware.cache import FetchFromCacheMiddleware
 from .cache_admin import CacheAdminMiddleware
+
 
 class CacheHeaderMiddleware(CacheAdminMiddleware):
     def process_request(self, request):

@@ -27,8 +27,7 @@ class SendMailTestCase(TestCase):
 
     def test_required_functions(self):
         """Test if required functions exists"""
-        self.assertIsNotNone(mail_utils.old_send_mail)
-        self.assertIsNotNone( mail_utils.send_mail)
+        self.assertIsNotNone(mail_utils.send_mail)
 
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
     @patch('djlotrek.mail_utils.loader')
@@ -41,7 +40,10 @@ class SendMailTestCase(TestCase):
         mail_utils.send_mail(**self.params)
 
         # assert calls
-        get_template_calls = [call(self.template_txt), call(self.template_html)]
+        get_template_calls = [
+            call(self.template_txt),
+            call(self.template_html)
+        ]
         mocked_loader.get_template.assert_has_calls(get_template_calls)
         mocked_sender.assert_called_once_with(
             subject='subject test',
@@ -56,7 +58,9 @@ class SendMailTestCase(TestCase):
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
     @patch('djlotrek.mail_utils.loader')
     def test_sender_multiple_call(self, mocked_loader, mocked_sender):
-        """Test email sender is called multiple times with corretly parameters"""
+        """
+        Test email sender is called multiple times with corretly parameters
+        """
         get_templates_return = [self.render_plain, self.render_html]
         mocked_loader.get_template = Mock(side_effect=get_templates_return)
         cc = ['one@test.it', 'two@test.it']
@@ -126,7 +130,6 @@ class SendMailTestCase(TestCase):
             alternatives=(('plain body', 'text/html'),)
         )
 
-
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
     @patch('djlotrek.mail_utils.loader')
     def test_sender_call_only_html_body(self, mocked_loader, mocked_sender):
@@ -193,4 +196,3 @@ class SendMailTestCase(TestCase):
 
         # assert calls
         mocked_sender.return_value.send.assert_called_once_with(True)
-

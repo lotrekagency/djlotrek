@@ -3,7 +3,10 @@ from mock import patch
 
 from django.test import TestCase, RequestFactory
 
-from djlotrek.templatetags.djlotrek_tags import absolute_url, auto_update_year_range
+from djlotrek.templatetags.djlotrek_tags import (
+    absolute_url,
+    auto_update_year_range
+)
 
 
 class TemplateTagsTestCase(TestCase):
@@ -18,7 +21,7 @@ class TemplateTagsTestCase(TestCase):
         request.META['HTTP_HOST'] = 'localhost'
 
         context = {
-            'request' : request
+            'request': request
         }
 
         abs_url = absolute_url(context, '/ciao/')
@@ -48,9 +51,8 @@ class TemplateTagsTestCase(TestCase):
         self.assertEqual(abs_url, '/ciao/')
         self.assertNotEqual(abs_url, '/')
 
-
     @patch('djlotrek.templatetags.djlotrek_tags.datetime')
-    def test_auto_update_year_range(self,datetime_now):
+    def test_auto_update_year_range(self, datetime_now):
         """
         templatetags auto_update_year_range pass string of start year
         and return itself when current year is equal to start year.
@@ -58,7 +60,7 @@ class TemplateTagsTestCase(TestCase):
         year range in format '{start_year} - {current_year}'. Otherwise,
         it will return current year when start not provided
         """
-        datetime_now.datetime.now.return_value = datetime.date(2017,12,12)
+        datetime_now.datetime.now.return_value = datetime.date(2017, 12, 12)
         current_year = 2017
 
         tested_year = auto_update_year_range()
@@ -67,6 +69,6 @@ class TemplateTagsTestCase(TestCase):
 
         tested_year_start = auto_update_year_range('1995')
 
-        composed_year = "1995-"+str(current_year)
+        composed_year = "1995-" + str(current_year)
         self.assertEqual(tested_year_start, composed_year)
         self.assertNotEqual(tested_year_start, "-")

@@ -27,9 +27,9 @@ class UtilsTestCase(TestCase):
 
         grouped_objects = group_objects_by_attribute(humans, 'age')
 
-        self.assertEqual (len(grouped_objects[30]), 2)
-        self.assertEqual (len(grouped_objects[26]), 1)
-        self.assertEqual (len(grouped_objects[22]), 2)
+        self.assertEqual(len(grouped_objects[30]), 2)
+        self.assertEqual(len(grouped_objects[26]), 1)
+        self.assertEqual(len(grouped_objects[22]), 2)
 
     def test_order_dict_from_list(self):
         """
@@ -37,10 +37,16 @@ class UtilsTestCase(TestCase):
         then return ordered dictionary
         """
         my_dict = {
-            'italian' : 'ciao',
-            'english' : 'hello',
-            'spanish' : 'hola',
+            'italian': 'ciao',
+            'english': 'hello',
+            'spanish': 'hola',
         }
 
-        ordered_dict = order_dict_from_list(my_dict, ['english', 'spanish', 'italian', 'german'])
-        self.assertEqual(list(ordered_dict.keys()), ['english', 'spanish', 'italian'])
+        ordered_dict = order_dict_from_list(
+            my_dict,
+            ['english', 'spanish', 'italian', 'german']
+        )
+        self.assertEqual(
+            list(ordered_dict.keys()),
+            ['english', 'spanish', 'italian']
+        )
