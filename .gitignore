@@ -31,3 +31,6 @@ error_logs.log
 #Build
 dist/
 djlotrek.egg-info/
+
+# Coverage report
+coverage.xml
