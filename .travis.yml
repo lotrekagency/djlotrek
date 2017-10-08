@@ -11,6 +11,4 @@ install:
 script:
   - flake8
   - ./runtests.py --with-coverage
-
-after_success:
   - codecov
