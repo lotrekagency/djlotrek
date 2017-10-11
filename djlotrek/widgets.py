@@ -1,4 +1,4 @@
-from django.contrib.admin import helpers, widgets
+from django.contrib.admin import widgets
 from django.contrib.admin.views.main import IS_POPUP_VAR, TO_FIELD_VAR
 from django.template.loader import render_to_string
 from django.utils.safestring import mark_safe
@@ -38,7 +38,7 @@ class RelatedOneToOneWidgetWrapper(widgets.RelatedFieldWidgetWrapper):
                 template_model['class']._meta.object_name.lower()
             )
 
-            #if self.can_add_related:
+            # if self.can_add_related:
             related_url = reverse(
                 'admin:%s_%s_add'
                 % info, current_app=self.admin_site.name
@@ -51,9 +51,9 @@ class RelatedOneToOneWidgetWrapper(widgets.RelatedFieldWidgetWrapper):
 
             context['model_choices'].append(
                 {
-                    'related_url' : related_url,
-                    'label' :  template_model['label'],
-                    'extras' : template_model.get('extras', '')
+                    'related_url': related_url,
+                    'label':  template_model['label'],
+                    'extras': template_model.get('extras', '')
                 }
             )
 
@@ -70,4 +70,3 @@ class RelatedOneToOneWidgetWrapper(widgets.RelatedFieldWidgetWrapper):
             context
         )
         return mark_safe(html)
-

@@ -1,6 +1,12 @@
 from django.test import TestCase
 
-from djlotrek.templatetags.djlotrek_filters import key, is_in, is_not_in, get_class, get_sorted
+from djlotrek.templatetags.djlotrek_filters import (
+    key,
+    is_in,
+    is_not_in,
+    get_class,
+    get_sorted
+)
 
 
 class TemplateFiltersTestCase(TestCase):
@@ -11,7 +17,7 @@ class TemplateFiltersTestCase(TestCase):
         pass dictionary object and key name then return value if
         key exists otherwise return none
         """
-        my_dict = {'mykey' : 'value'}
+        my_dict = {'mykey': 'value'}
         self.assertEqual(key(my_dict, 'mykey'), 'value')
         self.assertEqual(key(my_dict, 'nokey'), None)
 
@@ -38,7 +44,7 @@ class TemplateFiltersTestCase(TestCase):
         templatefilter get_class use to get a class name of retrieved class
         """
         a = 1
-        my_dict = {'mykey' : 'value'}
+        my_dict = {'mykey': 'value'}
         self.assertEqual(get_class(a), 'int')
         self.assertEqual(get_class(my_dict), 'dict')
 
@@ -47,5 +53,5 @@ class TemplateFiltersTestCase(TestCase):
         templatefilter get_sorted retrive list objects and return sorted
         version of it
         """
-        a = [10,2,3,5,1]
-        self.assertEqual(get_sorted(a), [1,2,3,5,10])
+        a = [10, 2, 3, 5, 1]
+        self.assertEqual(get_sorted(a), [1, 2, 3, 5, 10])
