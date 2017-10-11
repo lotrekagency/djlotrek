@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='djlotrek',
-    version='0.0.3',
+    version='0.0.4',
     url='https://github.com/lotrekagency/djlotrek',
     install_requires=[
         'Django >= 1.10',
@@ -15,6 +15,7 @@ setup(
     author="Lotrek",
     author_email="dimmitutto@lotrek.it",
     packages=find_packages(),
+    include_package_data=True,
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
