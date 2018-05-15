@@ -1,5 +1,5 @@
 # DjLotrek
-
+[![Latest Version](https://img.shields.io/pypi/v/djlotrek.svg)](https://pypi.python.org/pypi/djlotrek/)
 [![Build Status](https://travis-ci.org/lotrekagency/djlotrek.svg?branch=master)](https://travis-ci.org/lotrekagency/djlotrek) [![codecov](https://codecov.io/gh/lotrekagency/djlotrek/branch/master/graph/badge.svg)](https://codecov.io/gh/lotrekagency/djlotrek)
 
 There's no party without DjLotrek, our personal Django library
