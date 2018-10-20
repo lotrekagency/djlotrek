@@ -31,6 +31,6 @@ class AESTestCase(TestCase):
         dec = djlotrek.aes.decode(enc)
         self.assertEqual(dec, 'marco123@gmail.com')
 
-        enc = djlotrek.aes.encode('m.marotta@eglab.it')
+        enc = djlotrek.aes.encode('m.marot@eglab.it')
         dec = djlotrek.aes.decode(enc)
-        self.assertEqual(dec, 'm.marotta@eglab.it')
+        self.assertEqual(dec, 'm.marot@eglab.it')
