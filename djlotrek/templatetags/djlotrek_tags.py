@@ -2,7 +2,10 @@ import datetime
 import re
 
 from django import template
-from django.core.urlresolvers import reverse, NoReverseMatch
+try:
+    from django.core.urlresolvers import reverse, NoReverseMatch
+except ImportError:
+    from django.urls import reverse, NoReverseMatch
 
 from djlotrek import get_host_url
 from urllib.parse import urljoin
