@@ -5,7 +5,6 @@ setup(
     version='0.0.4',
     url='https://github.com/lotrekagency/djlotrek',
     install_requires=[
-        'Django >= 1.11.16',
         'pycrypto >= 2.6.1',
         'requests >= 2.18.4'
     ],

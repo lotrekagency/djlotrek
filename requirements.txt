@@ -1,3 +1,2 @@
-Django==1.11.16
 pycrypto==2.6.1
 requests==2.18.4
