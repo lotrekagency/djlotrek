@@ -1,4 +1,6 @@
 from setuptools import setup, find_packages
+from m2r import parse_from_file
+
 
 setup(
     name='djlotrek',
@@ -9,7 +11,7 @@ setup(
         'requests >= 2.18.4'
     ],
     description="Lotrek's beloved Django utilities library",
-    long_description=open('README.rst', 'r').read(),
+    long_description=parse_from_file('README.md'),
     license="MIT",
     author="Lotrek",
     author_email="dimmitutto@lotrek.it",
