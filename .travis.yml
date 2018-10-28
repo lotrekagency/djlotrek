@@ -3,9 +3,16 @@ language: python
 cache: pip
 
 python:
+  - "3.4"
+  - "3.5"
   - "3.6"
 
+env:
+  - DJANGO_VERSION=">=1.11.15,<2.0"
+  - DJANGO_VERSION=">=2.0"
+
 install:
+  - pip install -q Django$DJANGO_VERSION
   - pip install -r requirements-dev.txt
 
 script:
