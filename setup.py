@@ -4,7 +4,7 @@ from m2r import parse_from_file
 
 setup(
     name='djlotrek',
-    version='0.0.5',
+    version='0.0.6',
     url='https://github.com/lotrekagency/djlotrek',
     install_requires=[
         'pycrypto >= 2.6.1',
