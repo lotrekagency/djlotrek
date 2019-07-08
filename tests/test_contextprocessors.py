@@ -1,0 +1,1 @@
+from djlotrek import context_processors

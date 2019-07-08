@@ -1,5 +1,8 @@
 from django.conf import settings as django_settings
-from django.core.urlresolvers import resolve, reverse
+try:
+    from django.core.urlresolvers import reverse, resolve
+except ImportError:
+    from django.urls import reverse, resolve
 from django.utils.translation import activate, get_language
 from urllib.parse import urljoin
 
