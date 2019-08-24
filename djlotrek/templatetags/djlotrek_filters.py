@@ -37,7 +37,7 @@ def get_sorted(value):
 
 @register.filter(name='regex_match')
 def regex_match(value, regex):
-    pattern = re.compile(regex, re.U|re.I)
+    pattern = re.compile(regex, re.U | re.I)
     if pattern.match(value):
         return True
     return False
