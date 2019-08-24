@@ -1,4 +1,7 @@
 [run]
-omit = */**/__init__.py
+omit =
+    */**/__init__.py
+    djlotrek/rosetta_utils.py
+    djlotrek/widgets.py
 [report]
 show_missing = True

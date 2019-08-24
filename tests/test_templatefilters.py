@@ -5,7 +5,9 @@ from djlotrek.templatetags.djlotrek_filters import (
     is_in,
     is_not_in,
     get_class,
-    get_sorted
+    get_sorted,
+    media_url,
+    regex_match
 )
 
 
@@ -55,3 +57,26 @@ class TemplateFiltersTestCase(TestCase):
         """
         a = [10, 2, 3, 5, 1]
         self.assertEqual(get_sorted(a), [1, 2, 3, 5, 10])
+
+    def test_media_url(self):
+        """
+        templatefilter media_url retrive a media object and get the url
+        """
+        self.assertEqual(media_url(None), '')
+        self.assertEqual(media_url({'a' : 2}), '')
+
+    def test_regex_match(self):
+        """
+        templatefilter regex_match return True if regex matches
+        """
+        self.assertEqual(
+            regex_match(
+                'Cats are smarter than dogs', '(.*) are (.*?) .*'
+            ), True
+        )
+
+        self.assertEqual(
+            regex_match(
+                'Cats are smarter than dogs', '(.*) àre (.*?) .*'
+            ), False
+        )

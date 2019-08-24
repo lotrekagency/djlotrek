@@ -24,6 +24,9 @@ class TemplateTagsTestCase(TestCase):
             'request': request
         }
 
+        abs_url = absolute_url(context, '')
+        self.assertEqual(abs_url, '')
+
         abs_url = absolute_url(context, '/ciao/')
         self.assertEqual(abs_url, 'http://localhost/ciao/')
 
@@ -65,10 +68,13 @@ class TemplateTagsTestCase(TestCase):
 
         tested_year = auto_update_year_range()
         self.assertEqual(tested_year, current_year)
-        self.assertNotEqual(tested_year, current_year+1)
+        self.assertNotEqual(tested_year, current_year + 1)
 
         tested_year_start = auto_update_year_range('1995')
 
         composed_year = "1995-" + str(current_year)
         self.assertEqual(tested_year_start, composed_year)
         self.assertNotEqual(tested_year_start, "-")
+
+        datetime_now.datetime.now.return_value = datetime.date(2019, 12, 12)
+        self.assertEqual(auto_update_year_range(2019), 2019)
