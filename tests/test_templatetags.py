@@ -5,7 +5,8 @@ from django.test import TestCase, RequestFactory
 
 from djlotrek.templatetags.djlotrek_tags import (
     absolute_url,
-    auto_update_year_range
+    auto_update_year_range,
+    active
 )
 
 
@@ -78,3 +79,14 @@ class TemplateTagsTestCase(TestCase):
 
         datetime_now.datetime.now.return_value = datetime.date(2019, 12, 12)
         self.assertEqual(auto_update_year_range(2019), 2019)
+
+    def test_active(self):
+        request = RequestFactory().get('/sitemap.xml')
+        self.assertEqual(active(
+            {'request': request}, 'sitemap'
+        ), 'active')
+
+        request = RequestFactory().get('/other')
+        self.assertEqual(active(
+            {'request': request}, ''
+        ), '')

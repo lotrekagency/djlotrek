@@ -11,4 +11,5 @@ settings.configure(
         'django.contrib.auth',
         'djlotrek',
     ],
+    ROOT_URLCONF='tests.urls',
 )
