@@ -3,5 +3,7 @@ omit =
     */**/__init__.py
     djlotrek/rosetta_utils.py
     djlotrek/widgets.py
+    djlotrek/middleware/cache_admin.py
+    djlotrek/middleware/cache_header.py
 [report]
 show_missing = True

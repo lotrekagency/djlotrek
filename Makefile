@@ -5,4 +5,4 @@ clean:
 	@find . -name "__pycache__" -type d | xargs rm -rf
 
 test: clean
-	@pytest --cov=djlotrek
+	@pytest --cov=djlotrek -s

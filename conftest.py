@@ -12,4 +12,11 @@ settings.configure(
         'djlotrek',
     ],
     ROOT_URLCONF='tests.urls',
+    LANGUAGE_CODE = 'it',
+    LANGUAGES = (
+        ('it', 'Italian'),
+        ('en', 'English'),
+    ),
+    USE_I18N = True,
+    USE_L10N = True
 )
