@@ -44,7 +44,7 @@ class LangBasedOnPreferences(LocaleMiddleware):
         language_from_path = translation.get_language_from_path(request.path_info)
         urlconf = getattr(request, 'urlconf', settings.ROOT_URLCONF)
         i18n_patterns_used, _ = is_language_prefix_patterns_used(urlconf)
-        if (response.status_code == 404 and i18n_patterns_used):
+        if (language != language_from_path and response.status_code == 404 and i18n_patterns_used):
             language_path = '%s' % (request.path_info)
             path_valid = is_valid_path(language_path, urlconf)
             if not path_valid:
