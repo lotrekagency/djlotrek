@@ -18,8 +18,8 @@ def alternate_seo_url(request):
     path = request.path
     url_parts = resolve(path)
     base_url = get_host_url(request)
+    cur_language = get_language()
     if not url_parts.app_names:
-        cur_language = get_language()
         for lang_code, lang_name in django_settings.LANGUAGES:
             activate(lang_code)
             url = reverse(
