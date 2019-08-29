@@ -21,7 +21,23 @@ class LangBasedOnPreferences(LocaleMiddleware):
                 language_code = language.split('-')[0]
                 return language_code
 
+    def _disabled(self, request):
+        disabled_views = getattr(settings, 'LANG_ON_PREFERENCE_DISABLED_VIEWS', [])
+        need_standard = False
+        for language_available in settings.LANGUAGES:
+            translation.activate(language_available[0])
+            try:
+                need_standard = resolve(request.path_info).url_name in disabled_views
+            except:
+                pass
+        return need_standard
+
     def process_request(self, request):
+        if self._disabled(request):
+            setattr(request, 'language_on_settings', False)
+            return super().process_request(request)
+        else:
+            setattr(request, 'language_on_settings', True)
         urlconf = getattr(request, 'urlconf', settings.ROOT_URLCONF)
         i18n_patterns_used, _ = is_language_prefix_patterns_used(urlconf)
         language = translation.get_language_from_request(request, check_path=i18n_patterns_used)
@@ -29,6 +45,7 @@ class LangBasedOnPreferences(LocaleMiddleware):
         language_from_browser = self._get_browser_language(request)
         language_from_session = request.session.get(translation.LANGUAGE_SESSION_KEY)
         language = settings.LANGUAGE_CODE
+
         if i18n_patterns_used:
             if language_from_session:
                 language = language_from_session
@@ -40,6 +57,8 @@ class LangBasedOnPreferences(LocaleMiddleware):
         request.LANGUAGE_CODE = translation.get_language()
 
     def process_response(self, request, response):
+        if not request.language_on_settings:
+            return super().process_response(request, response)
         language = translation.get_language()
         language_from_path = translation.get_language_from_path(request.path_info)
         urlconf = getattr(request, 'urlconf', settings.ROOT_URLCONF)
