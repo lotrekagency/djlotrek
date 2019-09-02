@@ -22,6 +22,7 @@ class LangBasedOnPreferences(LocaleMiddleware):
                 return language_code
 
     def _disabled(self, request):
+        language = translation.get_language()
         disabled_views = getattr(settings, 'LANG_ON_PREFERENCE_DISABLED_VIEWS', [])
         need_standard = False
         for language_available in settings.LANGUAGES:
@@ -30,6 +31,7 @@ class LangBasedOnPreferences(LocaleMiddleware):
                 need_standard = resolve(request.path_info).url_name in disabled_views
             except:
                 pass
+        translation.activate(language)
         return need_standard
 
     def process_request(self, request):

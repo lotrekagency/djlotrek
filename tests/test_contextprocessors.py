@@ -22,10 +22,10 @@ class ContextProcessorsTestCase(TestCase):
             HTTP_HOST='localhost:8000'
         )
         self.assertEqual(
-            alternate_seo_url(request)['alternate']['it'],
+            alternate_seo_url(request)['alternate_urls']['it'],
             'http://localhost:8000/about'
         )
         self.assertEqual(
-            alternate_seo_url(request)['alternate']['en'],
+            alternate_seo_url(request)['alternate_urls']['en'],
             'http://localhost:8000/en/about'
         )
