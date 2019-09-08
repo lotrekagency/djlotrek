@@ -29,4 +29,3 @@ def alternate_seo_url(request):
             alternate_url[lang_code] = urljoin(base_url, url)
     activate(cur_language)
     return {'alternate_urls': alternate_url}
-

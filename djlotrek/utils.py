@@ -30,7 +30,6 @@ def order_dict_from_list(queue, key_order):
 
 
 def alternate_seo_url_with_object(request, obj_class, **kwargs):
-    print ("ENTER")
     alternate_url = dict()
     path = request.path
     url_parts = resolve(path)
@@ -52,6 +51,5 @@ def alternate_seo_url_with_object(request, obj_class, **kwargs):
                 alternate_url[lang_code] = urljoin(base_url, url)
             except obj_class.DoesNotExist as ex:
                 pass
-    print (cur_language)
     activate(cur_language)
     return alternate_url
