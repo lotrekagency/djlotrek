@@ -47,7 +47,6 @@ class LangBasedOnPreferences(LocaleMiddleware):
         language_from_browser = self._get_browser_language(request)
         language_from_session = request.session.get(translation.LANGUAGE_SESSION_KEY)
         language = settings.LANGUAGE_CODE
-
         if i18n_patterns_used:
             if language_from_session:
                 language = language_from_session
