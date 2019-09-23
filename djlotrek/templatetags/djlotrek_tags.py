@@ -26,8 +26,11 @@ def auto_update_year_range(start=None):
 @register.simple_tag(takes_context=True)
 def active(context, url_name):
     request = context['request']
-    if url_name == resolve(request.path_info).url_name:
-        return 'active'
+    try:
+        if url_name == resolve(request.path_info).url_name:
+            return 'active'
+    except:
+        pass
     return ''
 
 
