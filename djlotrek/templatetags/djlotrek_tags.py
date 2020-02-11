@@ -29,7 +29,7 @@ def active(context, url_name):
     try:
         if url_name == resolve(request.path_info).url_name:
             return 'active'
-    except:
+    except: # NOQA
         pass
     return ''
 

@@ -29,7 +29,7 @@ class LangBasedOnPreferences(LocaleMiddleware):
             translation.activate(language_available[0])
             try:
                 need_standard = resolve(request.path_info).url_name in disabled_views
-            except:
+            except: # NOQA
                 pass
         translation.activate(language)
         return need_standard

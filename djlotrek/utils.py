@@ -49,7 +49,7 @@ def alternate_seo_url_with_object(request, obj_class, **kwargs):
                     args=args
                 )
                 alternate_url[lang_code] = urljoin(base_url, url)
-            except obj_class.DoesNotExist as ex:
+            except obj_class.DoesNotExist:
                 pass
     activate(cur_language)
     return alternate_url
