@@ -12,8 +12,8 @@ env:
   - DJANGO_VERSION=">=2.0"
 
 install:
-  - pip install -q Django$DJANGO_VERSION
   - pip install -r requirements-dev.txt
+  - pip install -q Django$DJANGO_VERSION
 
 script:
   - flake8 djlotrek
