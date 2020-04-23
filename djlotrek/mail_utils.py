@@ -7,7 +7,7 @@ def send_mail(
     sender, receivers, subject, context={},
     template_html=None, template_txt=None,
     plain_message='', fail_silently=False,
-    cc=[], bcc=[], files=[]
+    cc=[], bcc=[], files=[], headers=None
 ):
 
     plain_message = ''
@@ -28,7 +28,8 @@ def send_mail(
         to=receivers,
         cc=cc,
         bcc=bcc,
-        alternatives=((html_text or plain_message, 'text/html'),)
+        alternatives=((html_text or plain_message, 'text/html'),),
+        headers=headers
     )
 
     for file_item in files:
