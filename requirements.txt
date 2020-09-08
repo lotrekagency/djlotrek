@@ -1,2 +1,2 @@
-pycrypto==2.6.1
+pycryptodome==3.9.8
 requests==2.18.4

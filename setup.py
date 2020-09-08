@@ -6,7 +6,7 @@ setup(
     version='0.0.6',
     url='https://github.com/lotrekagency/djlotrek',
     install_requires=[
-        'pycrypto >= 2.6.1',
+        'pycryptodome >= 3.9.8',
         'requests >= 2.18.4'
     ],
     description="Lotrek's beloved Django utilities library",
