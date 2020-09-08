@@ -52,7 +52,8 @@ class SendMailTestCase(TestCase):
             to=['they@another.it'],
             cc=[],
             bcc=[],
-            alternatives=(('html body', 'text/html'),)
+            alternatives=(('html body', 'text/html'),),
+            headers=None
         )
 
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
@@ -77,7 +78,8 @@ class SendMailTestCase(TestCase):
             to=['they@another.it'],
             cc=cc,
             bcc=[],
-            alternatives=(('html body', 'text/html'),)
+            alternatives=(('html body', 'text/html'),),
+            headers=None
         )
 
         mocked_loader.get_template.side_effect = get_templates_return
@@ -106,7 +108,8 @@ class SendMailTestCase(TestCase):
             to=['they@another.it', 'more@test.it'],
             cc=cc,
             bcc=['tests@test.it'],
-            alternatives=(('html body', 'text/html'),)
+            alternatives=(('html body', 'text/html'),),
+            headers=None
         )
 
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
@@ -127,7 +130,8 @@ class SendMailTestCase(TestCase):
             to=['they@another.it'],
             cc=[],
             bcc=[],
-            alternatives=(('plain body', 'text/html'),)
+            alternatives=(('plain body', 'text/html'),),
+            headers=None
         )
 
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
@@ -148,7 +152,8 @@ class SendMailTestCase(TestCase):
             to=['they@another.it'],
             cc=[],
             bcc=[],
-            alternatives=(('html body', 'text/html'),)
+            alternatives=(('html body', 'text/html'),),
+            headers=None
         )
 
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
