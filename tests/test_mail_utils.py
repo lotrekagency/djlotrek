@@ -167,7 +167,8 @@ class SendMailTestCase(TestCase):
             {'path': 'path_test'},
             {'without_path': 'another_path'},
             {'path': 'another_path'},
-            {'data': 'data', 'content-type': 'image/jpeg'},
+            {'data': 'data', 'content-type': 'image/png'},
+            {'data': 'data2', 'filename': 'testfilename.jpeg', 'content-type': 'image/jpeg'},
         ]
         self.params.update({'files': fake_files})
 
@@ -177,7 +178,12 @@ class SendMailTestCase(TestCase):
         # assert calls
         mocked_sender.return_value.attach_file.assert_has_calls([
             call('path_test'),
-            call('another_path')
+            call('another_path'),
+        ])
+
+        mocked_sender.return_value.attach.assert_has_calls([
+            call('file.png', 'data', 'image/png'),
+            call('testfilename.jpeg', 'data2', 'image/jpeg')
         ])
 
     @patch('djlotrek.mail_utils.EmailMultiAlternatives')
