@@ -167,6 +167,7 @@ class SendMailTestCase(TestCase):
             {'path': 'path_test'},
             {'without_path': 'another_path'},
             {'path': 'another_path'},
+            {'data': 'data', 'content-type': 'image/jpeg'},
         ]
         self.params.update({'files': fake_files})
 

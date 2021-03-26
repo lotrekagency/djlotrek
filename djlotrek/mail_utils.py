@@ -1,3 +1,5 @@
+
+from mimetypes import guess_extension
 from django.core.mail import EmailMultiAlternatives
 
 from django.template import loader
@@ -33,7 +35,11 @@ def send_mail(
     )
 
     for file_item in files:
-        file_path = file_item.get('path')
-        if file_path:
-            mail.attach_file(file_path)
+        if file_item.get('path'):
+            mail.attach_file(file_item['path'])
+        elif file_item.get('data') and file_item.get('content-type'):
+            mail.attach(
+                file_item.get('filename', 'file.' + guess_extension(file_item['content-type'])),
+                file_item['data'], file_item['content-type']
+            )
     mail.send(fail_silently)
