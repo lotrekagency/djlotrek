@@ -39,7 +39,7 @@ def send_mail(
             mail.attach_file(file_item['path'])
         elif file_item.get('data') and file_item.get('content-type'):
             mail.attach(
-                file_item.get('filename', 'file.' + guess_extension(file_item['content-type'])),
+                file_item.get('filename', 'file' + guess_extension(file_item['content-type'])),
                 file_item['data'], file_item['content-type']
             )
     mail.send(fail_silently)
