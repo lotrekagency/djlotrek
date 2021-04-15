@@ -9,7 +9,7 @@ def send_mail(
     sender, receivers, subject, context={},
     template_html=None, template_txt=None,
     plain_message='', fail_silently=False,
-    cc=[], bcc=[], files=[], headers=None
+    cc=[], bcc=[], files=[], headers=None, reply_to=None
 ):
 
     plain_message = ''
@@ -31,7 +31,8 @@ def send_mail(
         cc=cc,
         bcc=bcc,
         alternatives=((html_text or plain_message, 'text/html'),),
-        headers=headers
+        headers=headers,
+        reply_to=reply_to
     )
 
     for file_item in files:
