@@ -19,7 +19,8 @@ class LangBasedOnPreferences(LocaleMiddleware):
             ]
             for language in languages:
                 language_code = language.split('-')[0]
-                return language_code
+                if language_code in dict(settings.LANGUAGES).keys():
+                    return language_code
 
     def _disabled(self, request):
         language = translation.get_language()
