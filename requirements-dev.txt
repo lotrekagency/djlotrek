@@ -1,5 +1,6 @@
 -r requirements.txt
 
+python-semantic-release==7.23.0
 codecov==2.0.9
 coverage>=4.4
 flake8==3.7.9
