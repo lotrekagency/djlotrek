@@ -1,9 +1,8 @@
 -r requirements.txt
 
-python-semantic-release==7.23.0
 codecov==2.0.9
 coverage>=4.4
-flake8==3.7.9
+flake8==4.0.1
 mock==2.0.0
 pytest>=3.9.1
 pytest-cov>=2.6.0
