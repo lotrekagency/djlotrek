@@ -6,4 +6,4 @@ clean:
 
 test: clean
 	@flake8 djlotrek
-	@pytest --cov=djlotrek -s
+	@pytest --cov=djlotrek -s --cov-report=xml --cov-report=term-missing
