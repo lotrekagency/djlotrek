@@ -7,13 +7,11 @@ import re
 class UrlIgnoreCacheMiddleware(FetchFromCacheMiddleware):
     def process_request(self, request):
         full_path = request.get_full_path()
-        ignores = getattr(settings, 'CACHE_MIDDLEWARE_IGNORE', [])
+        ignores = getattr(settings, "CACHE_MIDDLEWARE_IGNORE", [])
         if isinstance(ignores, str):
             ignores = [ignores]
         for ignore in ignores:
             if re.match(ignore, full_path):
                 request._cache_update_cache = False
                 return None
-        return super(UrlIgnoreCacheMiddleware, self).process_request(
-            request
-        )
+        return super(UrlIgnoreCacheMiddleware, self).process_request(request)

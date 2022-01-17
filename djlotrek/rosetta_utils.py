@@ -9,4 +9,4 @@ from subprocess import Popen
 
 @receiver(post_save)
 def restart_server(sender, **kwargs):
-    Popen(['./gunicorn.sh', 'restart'])
+    Popen(["./gunicorn.sh", "restart"])

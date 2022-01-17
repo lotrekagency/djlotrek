@@ -7,21 +7,20 @@ from djlotrek.templatetags.djlotrek_filters import (
     get_class,
     get_sorted,
     media_url,
-    regex_match
+    regex_match,
 )
 
 
 class TemplateFiltersTestCase(TestCase):
-
     def test_key(self):
         """
         templatefilter key is use for get value from dictionary object it's
         pass dictionary object and key name then return value if
         key exists otherwise return none
         """
-        my_dict = {'mykey': 'value'}
-        self.assertEqual(key(my_dict, 'mykey'), 'value')
-        self.assertEqual(key(my_dict, 'nokey'), None)
+        my_dict = {"mykey": "value"}
+        self.assertEqual(key(my_dict, "mykey"), "value")
+        self.assertEqual(key(my_dict, "nokey"), None)
 
     def test_is_in(self):
         """
@@ -29,8 +28,8 @@ class TemplateFiltersTestCase(TestCase):
         by comma (,) it pass value and arguments string then return a
         boolean object of existen of value
         """
-        self.assertEqual(is_in('ciao', 'hello,ciao'), True)
-        self.assertEqual(is_in('hola', 'hello,ciao'), False)
+        self.assertEqual(is_in("ciao", "hello,ciao"), True)
+        self.assertEqual(is_in("hola", "hello,ciao"), False)
 
     def test_is_not_in(self):
         """
@@ -38,17 +37,17 @@ class TemplateFiltersTestCase(TestCase):
         from string list separate by comma (,) it pass value and
         arguments string then return a boolean object of not existen of value
         """
-        self.assertEqual(is_not_in('ciao', 'hello,ciao'), False)
-        self.assertEqual(is_not_in('hola', 'hello,ciao'), True)
+        self.assertEqual(is_not_in("ciao", "hello,ciao"), False)
+        self.assertEqual(is_not_in("hola", "hello,ciao"), True)
 
     def test_get_class(self):
         """
         templatefilter get_class use to get a class name of retrieved class
         """
         a = 1
-        my_dict = {'mykey': 'value'}
-        self.assertEqual(get_class(a), 'int')
-        self.assertEqual(get_class(my_dict), 'dict')
+        my_dict = {"mykey": "value"}
+        self.assertEqual(get_class(a), "int")
+        self.assertEqual(get_class(my_dict), "dict")
 
     def test_get_sorted(self):
         """
@@ -62,21 +61,17 @@ class TemplateFiltersTestCase(TestCase):
         """
         templatefilter media_url retrive a media object and get the url
         """
-        self.assertEqual(media_url(None), '')
-        self.assertEqual(media_url({'a' : 2}), '')
+        self.assertEqual(media_url(None), "")
+        self.assertEqual(media_url({"a": 2}), "")
 
     def test_regex_match(self):
         """
         templatefilter regex_match return True if regex matches
         """
         self.assertEqual(
-            regex_match(
-                'Cats are smarter than dogs', '(.*) are (.*?) .*'
-            ), True
+            regex_match("Cats are smarter than dogs", "(.*) are (.*?) .*"), True
         )
 
         self.assertEqual(
-            regex_match(
-                'Cats are smarter than dogs', '(.*) àre (.*?) .*'
-            ), False
+            regex_match("Cats are smarter than dogs", "(.*) àre (.*?) .*"), False
         )

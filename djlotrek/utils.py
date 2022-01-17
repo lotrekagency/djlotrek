@@ -1,5 +1,6 @@
 from collections import OrderedDict
 from django.conf import settings as django_settings
+
 try:
     from django.core.urlresolvers import reverse, resolve
 except ImportError:
@@ -44,10 +45,7 @@ def alternate_seo_url_with_object(request, obj_class, **kwargs):
                 obj = obj_class.objects.language().get(pk=main_obj.pk)
                 for kwarg_key, kwarg_val in kwargs.items():
                     args.append(getattr(obj, kwarg_key))
-                url = reverse(
-                    url_parts.view_name,
-                    args=args
-                )
+                url = reverse(url_parts.view_name, args=args)
                 alternate_url[lang_code] = urljoin(base_url, url)
             except obj_class.DoesNotExist:
                 pass
