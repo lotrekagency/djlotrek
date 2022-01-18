@@ -5,10 +5,10 @@ import base64
 
 
 def __pad(raw):
-    if (len(raw) % 16 == 0):
+    if len(raw) % 16 == 0:
         return raw
     padding_required = 16 - (len(raw) % 16)
-    data = raw + b'0' * padding_required
+    data = raw + b"0" * padding_required
     return data
 
 
@@ -24,6 +24,6 @@ def decode(raw):
     raw = raw.encode("utf8")
     aes = AES.new(settings.AES_ENCRIPTION_KEY.encode("utf8"), AES.MODE_ECB)
     raw = base64.urlsafe_b64decode(raw)
-    raw = aes.decrypt(raw).decode('utf-8')
+    raw = aes.decrypt(raw).decode("utf-8")
     raw = raw.rstrip("0")
     return raw
