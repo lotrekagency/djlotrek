@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.3 (2022-01-18)
+### Fix
+* Fix dependencies ([`3f544a5`](https://github.com/lotrekagency/djlotrek/commit/3f544a56c54b07db01b432ac03ad525c58bf80d8))
+
 ## v0.1.2 (2022-01-18)
 ### Fix
 * Fix cache middlewares and unify all middlewares under one master class ([`0c63d45`](https://github.com/lotrekagency/djlotrek/commit/0c63d4512a32be59c5315a28e4a16772ca085b00))
