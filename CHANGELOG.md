@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.2 (2022-01-18)
+### Fix
+* Fix cache middlewares and unify all middlewares under one master class ([`0c63d45`](https://github.com/lotrekagency/djlotrek/commit/0c63d4512a32be59c5315a28e4a16772ca085b00))
+
 ## v0.1.1 (2021-12-02)
 ### Fix
 * Make url cache middleware work also if no regex are set ([`59c3004`](https://github.com/lotrekagency/djlotrek/commit/59c300485f885fc117b54301e02a59b5a6953508))
