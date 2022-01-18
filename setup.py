@@ -1,4 +1,5 @@
 from setuptools import setup
-from djlotrek import __version__
+
+__version__ = "0.1.3"
 
 setup(version=__version__)
