@@ -2,6 +2,12 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.4 (2022-01-18)
+### Fix
+* Fix semantic realease config ([`8cedeab`](https://github.com/lotrekagency/djlotrek/commit/8cedeab0280aab206ddd8f9c9717f5c77028f463))
+* Fix versioning ([`d958685`](https://github.com/lotrekagency/djlotrek/commit/d958685b43fea737b2aa6fc64c23921304d1158a))
+* Fix build process ([`07518b1`](https://github.com/lotrekagency/djlotrek/commit/07518b1d7b5700253b131ef576296c3e83bcbe2f))
+
 ## v0.1.3 (2022-01-18)
 ### Fix
 * Fix dependencies ([`3f544a5`](https://github.com/lotrekagency/djlotrek/commit/3f544a56c54b07db01b432ac03ad525c58bf80d8))

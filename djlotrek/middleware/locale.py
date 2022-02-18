@@ -74,7 +74,7 @@ class LangBasedOnPreferences(LocaleMiddleware):
             and response.status_code == 404
             and i18n_patterns_used
         ):
-            language_path = "%s" % (request.path_info)
+            language_path = old_path = "%s" % (request.path_info)
             path_valid = is_valid_path(language_path, urlconf)
             if not path_valid:
                 for language_available in settings.LANGUAGES:
@@ -95,7 +95,8 @@ class LangBasedOnPreferences(LocaleMiddleware):
             )
             if path_needs_slash:
                 language_path = language_path + "/"
-            return self.response_redirect_class(language_path)
+            if old_path != language_path:
+                return self.response_redirect_class(language_path)
 
         if not (i18n_patterns_used and language_from_path):
             patch_vary_headers(response, ("Accept-Language",))
