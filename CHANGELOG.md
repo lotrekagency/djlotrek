@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.5 (2022-02-18)
+### Fix
+* Fix redirect loop in language middleware ([`88e376c`](https://github.com/lotrekagency/djlotrek/commit/88e376c503a8e66a9f83a5aff6a24a69207c9d65))
+
 ## v0.1.4 (2022-01-18)
 ### Fix
 * Fix semantic realease config ([`8cedeab`](https://github.com/lotrekagency/djlotrek/commit/8cedeab0280aab206ddd8f9c9717f5c77028f463))
