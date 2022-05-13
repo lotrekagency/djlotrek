@@ -1,6 +1,5 @@
 from django.conf import settings
 from django.conf.urls.i18n import is_language_prefix_patterns_used
-from django.http import HttpResponseRedirect
 from django.middleware.locale import LocaleMiddleware
 from django.urls import resolve, reverse, is_valid_path
 from django.utils import translation
@@ -8,21 +7,6 @@ from django.utils.cache import patch_vary_headers
 
 
 class LangBasedOnPreferences(LocaleMiddleware):
-
-    response_redirect_class = HttpResponseRedirect
-
-    def _get_browser_language(self, request):
-        browser_language_code = request.META.get("HTTP_ACCEPT_LANGUAGE", None)
-        if browser_language_code is not None:
-            languages = [
-                language
-                for language in browser_language_code.split(",")
-                if "=" not in language
-            ]
-            for language in languages:
-                language_code = language.split("-")[0]
-                if language_code in dict(settings.LANGUAGES).keys():
-                    return language_code
 
     def _disabled(self, request):
         language = translation.get_language()
@@ -48,17 +32,6 @@ class LangBasedOnPreferences(LocaleMiddleware):
         language = translation.get_language_from_request(
             request, check_path=i18n_patterns_used
         )
-        language_from_path = translation.get_language_from_path(request.path_info)
-        language_from_browser = self._get_browser_language(request)
-        language_from_session = request.session.get(translation.LANGUAGE_SESSION_KEY)
-        language = settings.LANGUAGE_CODE
-        if i18n_patterns_used:
-            if language_from_session:
-                language = language_from_session
-            if not language_from_session and language_from_path:
-                language = language_from_path
-            if not language_from_session and language_from_browser:
-                language = language_from_browser
         translation.activate(language)
         request.LANGUAGE_CODE = translation.get_language()
 
