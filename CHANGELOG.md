@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.7 (2022-09-14)
+### Fix
+* Fixed alternates to take right request path ([`3ed1529`](https://github.com/lotrekagency/djlotrek/commit/3ed1529dae8bb58ef387cfd7f2b195dbd4680f8d))
+
 ## v0.1.6 (2022-05-13)
 ### Fix
 * Fix lang middelware to work with newer versions of django ([`2045f63`](https://github.com/lotrekagency/djlotrek/commit/2045f63f466869073278e2934e383a36d9a23799))
