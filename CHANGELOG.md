@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.1.6 (2022-05-13)
+### Fix
+* Fix lang middelware to work with newer versions of django ([`2045f63`](https://github.com/lotrekagency/djlotrek/commit/2045f63f466869073278e2934e383a36d9a23799))
+
 ## v0.1.5 (2022-02-18)
 ### Fix
 * Fix redirect loop in language middleware ([`88e376c`](https://github.com/lotrekagency/djlotrek/commit/88e376c503a8e66a9f83a5aff6a24a69207c9d65))
