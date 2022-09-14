@@ -17,7 +17,7 @@ def settings(request):
 def alternate_seo_url(request):
     try:
         alternate_url = dict()
-        path = request.path
+        path = request.path_info
         url_parts = resolve(path)
         base_url = get_host_url(request)
         cur_language = get_language()
