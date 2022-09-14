@@ -32,7 +32,7 @@ def order_dict_from_list(queue, key_order):
 
 def alternate_seo_url_with_object(request, obj_class, **kwargs):
     alternate_url = dict()
-    path = request.path
+    path = request.path_info
     url_parts = resolve(path)
     base_url = get_host_url(request)
     cur_language = get_language()
